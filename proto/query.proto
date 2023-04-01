@@ -1,0 +1,25 @@
+syntax = "proto3";
+package car;
+import "google/api/annotations.proto";
+option go_package = "github.com/Sandeep-Narahari/car/types";
+
+
+service QueryCar {
+    rpc GetCars(GetCarsRequest) returns (GetCarsResponse) {
+        option (google.api.http) = {
+             get: "/v1/cars" 
+            };
+    }
+}
+message car{
+    string colour = 1;
+    string model=2;
+    uint64 mileage=3;
+    uint64 id=4;
+}
+message GetCarsRequest {
+    
+}
+message GetCarsResponse {
+    repeated car cars = 1;
+}

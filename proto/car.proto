@@ -1,0 +1,26 @@
+syntax = "proto3";
+package car;
+option go_package="github.com/Sandeep-Narahari/car/types";
+import "google/api/annotations.proto";
+
+
+service Car {
+  rpc CreateCar(CreateCarRequest) returns (CreateCarResponse) {
+    option (google.api.http) = {
+      post: "/v1/CreateCar"
+      body: "*"
+    };
+  }
+}
+
+message CreateCarRequest {
+  string colour = 1;
+  string model=2;
+  uint64 mileage=3;
+  uint64 id=4;
+}
+
+// The response message containing the greetings
+message CreateCarResponse {
+  uint64 id = 1;
+}
